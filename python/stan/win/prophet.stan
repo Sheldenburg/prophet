@@ -170,7 +170,7 @@ model {
   delta ~ double_exponential(0, tau);
   sigma_obs ~ normal(0, 0.5);
   beta ~ normal(0, sigmas);
-
+  sigma_obs = sigma_obs/w
   // Likelihood
-  y ~ normal(Y, sigma_obs/w);
+  y ~ normal(Y, sigma_obs);
 }
