@@ -113,6 +113,7 @@ data {
   real t[T];            // Time
   real cap[T];          // Capacities for logistic trend
   real y[T];            // Time series
+  real w[T];            // Sample weights
   int S;                // Number of changepoints
   real t_change[S];     // Times of trend changepoints
   real X[T,K];         // Regressors
@@ -171,5 +172,5 @@ model {
   beta ~ normal(0, sigmas);
 
   // Likelihood
-  y ~ normal(Y, sigma_obs);
+  y ~ normal(Y, sigma_obs/w);
 }
